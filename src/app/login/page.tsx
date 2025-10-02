@@ -1,8 +1,6 @@
-// app/login/page.tsx
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import "../globals.css";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -11,10 +9,12 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+
+    
     if (username === "user" && password === "1234") {
-      router.push("/");
+      router.push("/home"); 
     } else {
-      alert("Invalid credentials. Try user / 1234.");
+      alert("Invalid credentials. Try again");
     }
   };
 
@@ -39,6 +39,8 @@ export default function LoginPage() {
         <button type="submit" className="login-button">
           Log In
         </button>
+        <div>Test account</div>
+        <div>username:user | password:1234</div>
       </form>
     </div>
   );
