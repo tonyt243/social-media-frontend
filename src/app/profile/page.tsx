@@ -16,7 +16,7 @@ export default function ProfilePage() {
   getUser();
 }, []);
 
-  const handleEdit = () => alert("Edit profile clicked!");
+  const handleEdit = () => alert("Edit fucntion under construction!");
   const handleLogout = () => router.push("/login");
   const goToProfile = () => router.push("/profile");
 
