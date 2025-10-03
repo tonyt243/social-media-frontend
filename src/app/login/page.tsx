@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { mockUsers, User } from "../mockAPI/mockAPI";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -8,15 +9,20 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
 
+  const user = mockUsers.find(
+  (u: User) => u.loginUsername === username && u.password === password
+);
+
+  if (user) {
     
-    if (username === "user" && password === "1234") {
-      router.push("/home"); 
-    } else {
-      alert("Invalid credentials. Try again");
-    }
-  };
+    localStorage.setItem("currentUserId", user.id);
+    router.push("/home"); 
+  } else {
+    alert("Invalid credentials. Try again");
+  }
+};
 
   return (
     <div className="login-container">
@@ -40,7 +46,9 @@ export default function LoginPage() {
           Log In
         </button>
         <div>Test account</div>
-        <div>username:user | password:1234</div>
+        <div>username:bruce123 | password:batman</div>
+        <div>username:clark123 | password:superman</div>
+        <div>username:joker123 | password:joker</div>
       </form>
     </div>
   );
